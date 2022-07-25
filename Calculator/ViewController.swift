@@ -9,12 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-       
-    }
     @IBOutlet weak var holder: UIView!
-    	
+        
     var firstNumber = 0
     var resultNumber = 0
     var currentOperations: Operation?
@@ -31,6 +27,12 @@ class ViewController: UIViewController {
         label.font = UIFont(name: "Helvetica", size: 100)
         return label
     }()
+    		
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       
+    }
+  
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -52,6 +54,7 @@ class ViewController: UIViewController {
         for x in 0..<3 {
             let buttonRow1 = UIButton(frame:CGRect(x: buttonSize*CGFloat(x), y: holder.frame.size.height-buttonSize*2, width: buttonSize, height: buttonSize))
             buttonRow1.setTitleColor(.black, for: .normal)
+            buttonRow1.setTitleColor(.red, for: .highlighted)
             buttonRow1.backgroundColor = .white
             buttonRow1.setTitle("\(x+1)", for: .normal)
             holder.addSubview(buttonRow1)
@@ -61,6 +64,7 @@ class ViewController: UIViewController {
         for x in 0..<3 {
             let buttonRow2 = UIButton(frame:CGRect(x: buttonSize*CGFloat(x), y: holder.frame.size.height-buttonSize*3, width: buttonSize, height: buttonSize))
             buttonRow2.setTitleColor(.black, for: .normal)
+            buttonRow2.setTitleColor(.red, for: .highlighted)
             buttonRow2.backgroundColor = .white
             buttonRow2.setTitle("\(x+4)", for: .normal)
             holder.addSubview(buttonRow2)
@@ -70,6 +74,7 @@ class ViewController: UIViewController {
         for x in 0..<3 {
             let buttonRow3 = UIButton(frame:CGRect(x: buttonSize*CGFloat(x), y: holder.frame.size.height-buttonSize*4, width: buttonSize, height: buttonSize))
             buttonRow3.setTitleColor(.black, for: .normal)
+            buttonRow3.setTitleColor(.red, for: .highlighted)
             buttonRow3.backgroundColor = .white
             buttonRow3.setTitle("\(x+7)", for: .normal)
             holder.addSubview(buttonRow3)
@@ -84,6 +89,7 @@ class ViewController: UIViewController {
         clearButton.setTitle("CE", for: .normal)
         holder.addSubview(clearButton)
         clearButton.addTarget(self, action: #selector(clearResult), for: .touchUpInside)
+       
         
         let operations = ["=","+", "-", "x", "÷"]
         
@@ -98,7 +104,9 @@ class ViewController: UIViewController {
             button_operand.addTarget(self, action: #selector(operationPressed(_:)), for: .touchUpInside)
         }
         resultLabel.frame = CGRect(x: 20, y: clearButton.frame.origin.y - 110, width: view.frame.size.width - 40 , height: 100)
+        holder.addSubview(resultLabel)
     }
+        
     
         @objc func clearResult() {
             resultLabel.text = "0"
