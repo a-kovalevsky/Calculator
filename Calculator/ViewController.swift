@@ -54,32 +54,35 @@ class ViewController: UIViewController {
         for x in 0..<3 {
             let buttonRow1 = UIButton(frame:CGRect(x: buttonSize*CGFloat(x), y: holder.frame.size.height-buttonSize*2, width: buttonSize, height: buttonSize))
             buttonRow1.setTitleColor(.black, for: .normal)
-            buttonRow1.setTitleColor(.red, for: .highlighted)
             buttonRow1.backgroundColor = .white
+            buttonRow1.setTitleColor(.cyan, for: .highlighted)
             buttonRow1.setTitle("\(x+1)", for: .normal)
             holder.addSubview(buttonRow1)
             buttonRow1.tag = x+2
             buttonRow1.addTarget(self, action: #selector(numberPressed(_:)), for: .touchUpInside)
+           
         }
         for x in 0..<3 {
             let buttonRow2 = UIButton(frame:CGRect(x: buttonSize*CGFloat(x), y: holder.frame.size.height-buttonSize*3, width: buttonSize, height: buttonSize))
             buttonRow2.setTitleColor(.black, for: .normal)
-            buttonRow2.setTitleColor(.red, for: .highlighted)
             buttonRow2.backgroundColor = .white
+            buttonRow2.setTitleColor(.cyan, for: .highlighted)
             buttonRow2.setTitle("\(x+4)", for: .normal)
             holder.addSubview(buttonRow2)
             buttonRow2.tag = x+5
             buttonRow2.addTarget(self, action: #selector(numberPressed(_:)), for: .touchUpInside)
+          
         }
         for x in 0..<3 {
             let buttonRow3 = UIButton(frame:CGRect(x: buttonSize*CGFloat(x), y: holder.frame.size.height-buttonSize*4, width: buttonSize, height: buttonSize))
             buttonRow3.setTitleColor(.black, for: .normal)
-            buttonRow3.setTitleColor(.red, for: .highlighted)
             buttonRow3.backgroundColor = .white
+            buttonRow3.setTitleColor(.cyan, for: .highlighted)
             buttonRow3.setTitle("\(x+7)", for: .normal)
             holder.addSubview(buttonRow3)
             buttonRow3.tag = x+8
             buttonRow3.addTarget(self, action: #selector(numberPressed(_:)), for: .touchUpInside)
+
         }
         
         let clearButton = UIButton(frame:CGRect(x: 0, y: holder.frame.size.height-(buttonSize*5), width: holder.frame.size.width - buttonSize, height: buttonSize))
@@ -102,11 +105,12 @@ class ViewController: UIViewController {
             button_operand.tag = x+1
             button_operand.titleLabel?.font = UIFont(name: "Helvetica", size: fontSize)
             button_operand.addTarget(self, action: #selector(operationPressed(_:)), for: .touchUpInside)
+
         }
         resultLabel.frame = CGRect(x: 20, y: clearButton.frame.origin.y - 110, width: view.frame.size.width - 40 , height: 100)
         holder.addSubview(resultLabel)
     }
-        
+  
     
         @objc func clearResult() {
             resultLabel.text = "0"
